@@ -16,12 +16,6 @@ alias gl='git log'
 alias gpo='git push origin'
 alias gpom='git push origin master'
 alias gr='git restore .'
-alias 
-alias 
-alias 
-alias 
-alias 
-alias 
 
 # export PATH
 export PATH="/Users/matsushitatakanori/.composer/vendor/bin:$PATH" # composer
