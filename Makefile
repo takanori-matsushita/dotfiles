@@ -5,7 +5,11 @@ install:
 	@echo 'mattsunのdotfilesをご利用いただきありがとうございます'
 	@echo 'dotfileやアプリを自動でインストールします'
 	@echo 'インストールにはしばらく時間がかかりますので今しばらくお待ち下さい'
-	mkdir ~/development
+	mkdir ~/developme
+	nt
+	ln -s ~/dotfiles/.zshrc ~/.zshrc \
+	&& ln -s  ~/dotfiles/.vimrc ~/.vimrc \
+	&& ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 brew: #brew settings
 	brew update \
@@ -15,9 +19,9 @@ brew: #brew settings
 
 anyenv: #anyenv settings
 	echo y | anyenv install --init
-	mkdir -p $(anyenv root)/plugins
-	git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update
-	git clone https://github.com/znz/anyenv-git.git $(anyenv root)/plugins/anyenv-git
+	bin/bash -c $("mkdir -p $(anyenv root)/plugins")
+	bin/bash -c $("git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update")
+	bin/bash -c $("git clone https://github.com/znz/anyenv-git.git $(anyenv root)/plugins/anyenv-git")
 	anyenv update
 	anyenv git pull
 	anyenv install goenv
@@ -39,15 +43,25 @@ ghq:
 	ghq get git://github.com/project.git
 
 powerline:
-	pip install psutil
-	pip install powerline-shell
-	git clone https://github.com/powerline/fonts.git && cd fonts && ./install.sh
+	git clone https://github.com/b-ryan/powerline-shell \
+	&& cd powerline-shell \
+	&& python setup.py install
+	git clone https://github.com/powerline/fonts.git \
+	&& cd fonts \
+	&& ./install.sh
 
 tmux:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 zinit:
-	echo y | sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+	echo y | curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh
+
+zprezto:
+	git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+	setopt EXTENDED_GLOB
+    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+ ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    done
 
 .PHONY: help
 help:

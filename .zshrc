@@ -40,14 +40,16 @@ zle -N peco-src
 bindkey '^]' peco-src
 
 #powerline settings
-zplug "b-ryan/powerline-shell"
+precmd() {
+  print ""
+}
 
 function powerline_precmd() {
     PS1="$(powerline-shell --shell zsh $?)"
 }
 
 function install_powerline_precmd() {
-  for s in ${precmd_functions[@]}; do
+  for s in "${precmd_functions[@]}"; do
     if [ "$s" = "powerline_precmd" ]; then
       return
     fi
