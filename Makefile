@@ -8,11 +8,10 @@ install:
 	mkdir ~/development
 
 brew: #brew settings
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-	brew update
-	brew upgrade
-	brew cask upgrade
-	brew bundle
+	brew update \
+	&& brew upgrade \
+	&& brew cask upgrade \
+	&& brew bundle
 
 anyenv: #anyenv settings
 	echo y | anyenv install --init
