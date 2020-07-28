@@ -1,1 +1,2 @@
-make install
+1. /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+2. make install
