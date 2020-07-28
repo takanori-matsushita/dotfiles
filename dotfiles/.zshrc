@@ -7,15 +7,21 @@ alias dc='docker-compose'
 
 ## git
 alias ga='git add'
-alias gcm='git commit -m'
+alias gbd='git branch -d'
+alias bgD='git branch -D'
+alias gbm='git branch -m'
 alias gca='git commit --amend'
-alias gs='git switch'
-alias gss='git status'
+alias gcm='git commit -m'
 alias gf='git fetch'
 alias gl='git log'
 alias gpo='git push origin'
 alias gpom='git push origin master'
-alias gr='git restore .'
+alias gr='git restore'
+alias gra='git remote add origin'
+alias grs='git remote set-url origin'
+alias gs='git switch'
+alias gsc='git switch -c'
+alias gss='git status'
 
 # export PATH
 export PATH="/Users/matsushitatakanori/.composer/vendor/bin:$PATH" # composer
