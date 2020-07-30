@@ -1,3 +1,12 @@
+# autoload -Uz compinit && compinit
+
+# history settings
+export LANG=ja_JP.UTF-8
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+setopt share_history
 # anyenvパス
 eval "$(anyenv init -)"
 
@@ -5,15 +14,20 @@ eval "$(anyenv init -)"
 ## docker
 alias dc='docker-compose'
 
+## ghq peco hub
+alias g='cd $(ghq root)/$(ghq list | peco)'
+alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+
 ## git
 alias ga='git add'
 alias gbd='git branch -d'
-alias bgD='git branch -D'
+alias gbD='git branch -D'
 alias gbm='git branch -m'
 alias gca='git commit --amend'
 alias gcm='git commit -m'
 alias gf='git fetch'
 alias gl='git log'
+alias gop='git open'
 alias gpo='git push origin'
 alias gpom='git push origin master'
 alias gr='git restore'
@@ -61,6 +75,11 @@ if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
 
+# Source Prezto. 補完が見やすくなる
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 # tmux 自動起動
 [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
@@ -78,7 +97,11 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
+
 # zinit plugins
 zinit load momo-lab/zsh-abbrev-alias # 略語を展開する
 zinit ice wait'!0'; zinit load zsh-users/zsh-syntax-highlighting # 実行可能なコマンドに色付け
 zinit ice wait'!0'; zinit load zsh-users/zsh-completions # 補完
+zinit ice wait'!0'; zinit load zsh-users/zsh-autosuggestions # 履歴補完サジェスト
+zinit ice wait'!0'; zinit load zsh-users/zsh-history-substring-search # 履歴補完強化
+zinit ice wait'!0'; zinit load paulirish/git-open # git openで作業ディレクトリのwebリポジトリを開ける
