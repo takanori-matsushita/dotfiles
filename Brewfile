@@ -41,6 +41,9 @@ cask "thunderbird"
 cask "visual-studio-code"
 cask "zoomus"
 
-mas "Slack", id: 803453959
-mas "Xcode", id: 497799835
+mas "Keynote", 409183694
+mas "LINE", id: 539883307
 mas "OneDrive", id: 823766827
+mas "Slack", id: 803453959
+mas "The Unarchiver", id: 425424353
+mas "Xcode", id: 497799835
