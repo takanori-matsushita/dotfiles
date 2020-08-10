@@ -5,6 +5,7 @@ install:
 	@echo 'mattsunのdotfilesをご利用いただきありがとうございます'
 	@echo 'dotfileやアプリを自動でインストールします'
 	@echo 'インストールにはしばらく時間がかかりますので今しばらくお待ち下さい'
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	brew
 	mkdir ~/development
 	ln -s ~/dotfiles/.zshrc ~/.zshrc \
