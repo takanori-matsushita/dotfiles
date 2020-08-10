@@ -40,6 +40,11 @@ alias gss='git status'
 # export PATH
 export PATH="/Users/matsushitatakanori/.composer/vendor/bin:$PATH" # composer
 export PATH="$PATH:$HOME/development/flutter/bin" # flutter
+# php 7.4.0
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH" # openssl
+export PATH="/usr/local/opt/bzip2/bin:$PATH" # bzip2
+export PKG_CONFIG_PATH="/usr/local/opt/krb5/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:/usr/local/opt/libedit/lib/pkgconfig:/usr/local/opt/libjpeg/lib/pkgconfig:/usr/local/opt/libpng/lib/pkgconfig:/usr/local/opt/libxml2/lib/pkgconfig:/usr/local/opt/libzip/lib/pkgconfig:/usr/local/opt/oniguruma/lib/pkgconfig:/usr/local/opt/openssl@1.1/lib/pkgconfig:/usr/local/opt/tidy-html5/lib/pkgconfig"
+export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=/usr/local/opt/bzip2 --with-iconv=/usr/local/opt/libiconv"
 
 # peco settings
 function peco-src () {

@@ -1,18 +1,20 @@
 # makeコマンドのみを叩いた際に実行される
 .DEFAULT_GOAL := help
 
-install:
+install: message brew anyenv shell vscode flutter
+
+message:
 	@echo 'mattsunのdotfilesをご利用いただきありがとうございます'
 	@echo 'dotfileやアプリを自動でインストールします'
 	@echo 'インストールにはしばらく時間がかかりますので今しばらくお待ち下さい'
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-	brew
-	mkdir ~/development
-	ln -s ~/dotfiles/.zshrc ~/.zshrc \
+
+link:
+	mkdir ~/development \
+	&& ln -s ~/dotfiles/.zshrc ~/.zshrc \
 	&& ln -s  ~/dotfiles/.vimrc ~/.vimrc \
-	&& ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf \
-	&& ln -s ~/dotfiles/.config/powerline-shell/config.json ~/.config/powerline-shell/config.json
-	anyenv ghq flutter powerline tmux vscode zinit zprezto
+	&& ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+
+shell: powerline tmux zinit zprezto
 
 brew: #brew settings
 	brew update \
@@ -22,9 +24,10 @@ brew: #brew settings
 
 anyenv: #anyenv settings
 	echo y | anyenv install --init \
-	&& bin/bash -c $("mkdir -p $(anyenv root)/plugins") \
-	&& bin/bash -c $("git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update") \
-	&& bin/bash -c $("git clone https://github.com/znz/anyenv-git.git $(anyenv root)/plugins/anyenv-git") \
+	&& mkdir -p ~/.anyenv/plugins \
+	&& git clone https://github.com/znz/anyenv-update.git ~/.anyenv/plugins/anyenv-update \
+	&& git clone https://github.com/znz/anyenv-git.git ~/.anyenv/plugins/anyenv-git \
+	&& git clone https://github.com/rugamaga/anyenv-tfenv-init.git ~/.anyenv/plugins/anyenv-tfenv-init \
 	&& anyenv update \
 	&& anyenv git pull \
 	&& anyenv install goenv \
@@ -39,19 +42,29 @@ flutter:
 	&& curl -o flutter.zip -OL https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_1.17.5-stable.zip \
 	&& unzip flutter.zip \
 	&& rm -rf flutter.zip \
-	&& flutter precache
+	&& sudo gem install cocoapods \
+	&& flutter precache \
+	&& yes | flutter doctor --android-licenses
+
 
 ghq:
 	git config --global ghq.root ~/src \
 	&& ghq get git://github.com/project.git
 
 powerline:
-	git clone https://github.com/b-ryan/powerline-shell \
+	git clone https://github.com/b-ryan/powerline-shell ~/powerline-shell \
 	&& cd ~/powerline-shell \
 	&& python setup.py install \
 	&& git clone https://github.com/powerline/fonts.git \
 	&& cd fonts \
-	&& ./install.sh
+	&& ./install.sh \
+	&& mkdir ~/.config/powerline-shell \
+	&& ln -s ~/dotfiles/.config/powerline-shell/config.json ~/.config/powerline-shell/config.json
+
+ricty:
+	brew reinstall ricty --with-powerline
+	cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
+	fc-cache -vf
 
 tmux:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -110,7 +123,7 @@ zinit:
 	echo y | curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh
 
 zprezto:
-	git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+	git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 
 .PHONY: help
 help:
