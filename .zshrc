@@ -20,6 +20,7 @@ alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
 
 ## git
 alias ga='git add'
+alias gb='git branch'
 alias gbd='git branch -d'
 alias gbD='git branch -D'
 alias gbm='git branch -m'
@@ -29,6 +30,7 @@ alias gf='git fetch'
 alias gl='git log'
 alias gop='git open'
 alias gpo='git push origin'
+alias gpoh='git push origin HEAD'
 alias gpom='git push origin master'
 alias gr='git restore'
 alias gra='git remote add origin'
@@ -36,6 +38,13 @@ alias grs='git remote set-url origin'
 alias gs='git switch'
 alias gsc='git switch -c'
 alias gss='git status'
+
+# tmux
+alias tas='tmux attach-session -t'
+alias tks='tmux kill-server'
+alias tkss='tmux kill-session -t'
+alias tl='tmux ls'
+alias tns='tmux new -s'
 
 # export PATH
 export PATH="/Users/matsushitatakanori/.composer/vendor/bin:$PATH" # composer
