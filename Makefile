@@ -1,7 +1,7 @@
 # makeコマンドのみを叩いた際に実行される
 .DEFAULT_GOAL := help
 
-install: message brew anyenv shell vscode flutter
+install: message brew ricty anyenv shell vscode laravel flutter
 
 message:
 	@echo 'mattsunのdotfilesをご利用いただきありがとうございます'
@@ -11,7 +11,8 @@ message:
 link:
 	mkdir ~/development \
 	&& ln -s ~/dotfiles/.zshrc ~/.zshrc \
-	&& ln -s  ~/dotfiles/.vimrc ~/.vimrc \
+	&& ln -s ~/dotfiles/.vimrc ~/.vimrc \
+	&& ln -s ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json \
 	&& ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 shell: powerline tmux zinit zprezto
@@ -46,10 +47,12 @@ flutter:
 	&& flutter precache \
 	&& yes | flutter doctor --android-licenses
 
-
 ghq:
 	git config --global ghq.root ~/src \
 	&& ghq get git://github.com/project.git
+
+laravel:
+	composer global require laravel/installer
 
 powerline:
 	git clone https://github.com/b-ryan/powerline-shell ~/powerline-shell \
