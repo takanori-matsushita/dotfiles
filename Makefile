@@ -52,7 +52,7 @@ ghq:
 	&& ghq get git://github.com/project.git
 
 laravel:
-	composer global require laravel/installer
+	composer global require laravel/installer friendsofphp/php-cs-fixer
 
 powerline:
 	git clone https://github.com/b-ryan/powerline-shell ~/powerline-shell \
@@ -84,18 +84,23 @@ vscode:
 	code --install-extension cssho.vscode-svgviewer
 	code --install-extension Dart-Code.dart-code
 	code --install-extension Dart-Code.flutter
+	code --install-extension dbaeumer.vscode-eslint
 	code --install-extension donjayamanne.githistory
 	code --install-extension eamodio.gitlens
 	code --install-extension ecmel.vscode-html-css
 	code --install-extension emilast.LogFileHighlighter
+	code --install-extension esbenp.prettier-vscode
 	code --install-extension felixfbecker.php-debug
 	code --install-extension formulahendry.auto-close-tag
 	code --install-extension formulahendry.auto-rename-tag
 	code --install-extension foxundermoon.shell-format
+	code --install-extension golang.go
 	code --install-extension groksrc.ruby
+	code --install-extension hediet.vscode-drawio
 	code --install-extension Hridoy.rails-snippets
 	code --install-extension IBM.output-colorizer
 	code --install-extension jock.svg
+	code --install-extension junstyle.php-cs-fixer
 	code --install-extension kaiwood.endwise
 	code --install-extension lacroixdavid1.vscode-format-context-menu
 	code --install-extension manasxx.background-cover
@@ -117,10 +122,12 @@ vscode:
 	code --install-extension streetsidesoftware.code-spell-checker
 	code --install-extension syler.sass-indented
 	code --install-extension vscode-icons-team.vscode-icons
+	code --install-extension vscodevim.vim
 	code --install-extension waderyan.gitblame
 	code --install-extension wingrunr21.vscode-ruby
 	code --install-extension wmaurer.change-case
 	code --install-extension xabikos.JavaScriptSnippets
+	code --install-extension yzhang.markdown-all-in-one
 
 zinit:
 	echo y | curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh

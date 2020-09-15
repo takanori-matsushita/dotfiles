@@ -95,7 +95,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # tmux 自動起動
-[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+# [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 #_zinit
 ### Added by Zinit's installer
@@ -119,3 +119,4 @@ zinit ice wait'!0'; zinit load zsh-users/zsh-completions # 補完
 zinit ice wait'!0'; zinit load zsh-users/zsh-autosuggestions # 履歴補完サジェスト
 zinit ice wait'!0'; zinit load zsh-users/zsh-history-substring-search # 履歴補完強化
 zinit ice wait'!0'; zinit load paulirish/git-open # git openで作業ディレクトリのwebリポジトリを開ける
+
