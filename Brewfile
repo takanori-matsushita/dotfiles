@@ -53,6 +53,7 @@ cask "mysqlworkbench"
 cask "poedit"
 cask "postman"
 cask "sourcetree"
+cask "spotify"
 cask "stoplight-studio"
 cask "spectacle"
 cask "tableplus"
@@ -63,6 +64,7 @@ cask "zoomus"
 mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
 mas "OneDrive", id: 823766827
+mas "Microsoft OneNote", id: 784801555
 mas "Slack", id: 803453959
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
