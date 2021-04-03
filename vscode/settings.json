@@ -1,5 +1,4 @@
 {
-  "workbench.editor.enablePreview": false,
   "material-icon-theme.showWelcomeMessage": false,
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
@@ -10,8 +9,11 @@
   "editor.fontFamily": "Ricty",
   "editor.fontSize": 14,
   "editor.lineHeight": 0,
-  "files.associations": {
-    "*.erb": "html"
+  "emmet.includeLanguages": {
+    "erb": "html",
+    "*.blade.php": "html",
+    "vue": "html",
+    "vue": "css",
   },
   "workbench.colorTheme": "Atom One Dark",
   "workbench.iconTheme": "material-icon-theme",
@@ -46,11 +48,10 @@
     "editor.tabCompletion": "onlySnippets",
     "editor.wordBasedSuggestions": false
   },
-  "workbench.editor.showTabs": true,
   "go.formatTool": "goimports",
   "php-cs-fixer.onsave": true,
   "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
-  "php-cs-fixer.lastDownload": 1600741563456,
+  "php-cs-fixer.lastDownload": 1616037409620,
   "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7ZXJcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwiZm9ybWF0V2lkdGhcIjpcIjI0MFwiLFwiY3JlYXRlVGFyZ2V0XCI6ZmFsc2UsXCJwYWdlRm9ybWF0XCI6e1wieFwiOjAsXCJ5XCI6MCxcIndpZHRoXCI6MTE2OSxcImhlaWdodFwiOjgyN30sXCJzZWFyY2hcIjp0cnVlLFwic2hvd1N0YXJ0U2NyZWVuXCI6dHJ1ZSxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiZGFya0dyaWRDb2xvclwiOlwiIzZlNmU2ZVwiLFwiYXV0b3NhdmVcIjp0cnVlLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcIm9wZW5Db3VudGVyXCI6MCxcInZlcnNpb25cIjoxOCxcInVuaXRcIjoxLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJ1aVwiOlwiXCJ9In0=",
   "cSpell.userWords": [
     "Nuxt",
@@ -65,5 +66,16 @@
   "[php]": {
     "editor.defaultFormatter": "junstyle.php-cs-fixer",
     "phpcs.standard": "PSR2"
-  }
+  },
+  "git.autofetch": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "html.validate.styles": false
 }
