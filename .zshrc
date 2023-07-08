@@ -7,8 +7,6 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 setopt share_history
-# anyenvパス
-eval "$(anyenv init -)"
 
 # alias settings
 ## docker
@@ -68,10 +66,6 @@ zle -N peco-src
 bindkey '^]' peco-src
 
 #powerline settings
-precmd() {
-  print ""
-}
-
 function powerline_precmd() {
     PS1="$(powerline-shell --shell zsh $?)"
 }
@@ -85,7 +79,7 @@ function install_powerline_precmd() {
   precmd_functions+=(powerline_precmd)
 }
 
-if [ "$TERM" != "linux" ]; then
+if [ "$TERM" != "linux" -a -x "$(command -v powerline-shell)" ]; then
     install_powerline_precmd
 fi
 
@@ -96,30 +90,6 @@ fi
 
 # tmux 自動起動
 # [[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
-
-#_zinit
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
-
-# zinit plugins
-zinit load momo-lab/zsh-abbrev-alias # 略語を展開する
-zinit ice wait'!0'; zinit load zsh-users/zsh-syntax-highlighting # 実行可能なコマンドに色付け
-zinit ice wait'!0'; zinit load zsh-users/zsh-completions # 補完
-zinit ice wait'!0'; zinit load zsh-users/zsh-autosuggestions # 履歴補完サジェスト
-zinit ice wait'!0'; zinit load zsh-users/zsh-history-substring-search # 履歴補完強化
-zinit ice wait'!0'; zinit load paulirish/git-open # git openで作業ディレクトリのwebリポジトリを開ける
-
 
 ##########################################################
 #
@@ -138,18 +108,52 @@ gitDirty() { [[ $(git status 2> /dev/null | grep -o '\w\+' | tail -n1) != ("clea
 
 # Show cwd when shell prompts for input.
 tabtitle_precmd() {
-   if overridden; then return; fi
-   pwd=$(pwd) # Store full path as variable
-   cwd=${pwd##*/} # Extract current working dir only
-   print -Pn "\e]0;$cwd$(gitDirty)\a" # Replace with $pwd to show full path
+  if overridden; then return; fi
+  pwd=$(pwd) # Store full path as variable
+  cwd=${pwd##*/} # Extract current working dir only
+  print -Pn "\e]0;$cwd$(gitDirty)\a" # Replace with $pwd to show full path
 }
 [[ -z $precmd_functions ]] && precmd_functions=()
 precmd_functions=($precmd_functions tabtitle_precmd)
 
 # Prepend command (w/o arguments) to cwd while waiting for command to complete.
 tabtitle_preexec() {
-   if overridden; then return; fi
-   printf "\033]0;%s\a" "${1%% *} | $cwd$(gitDirty)" # Omit construct from $1 to show args
+  if overridden; then return; fi
+  printf "\033]0;%s\a" "${1%% *} | $cwd$(gitDirty)" # Omit construct from $1 to show args
 }
 [[ -z $preexec_functions ]] && preexec_functions=()
 preexec_functions=($preexec_functions tabtitle_preexec)
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+
+# zinit plugins
+zinit load momo-lab/zsh-abbrev-alias # 略語を展開する
+zinit ice wait'!0'; zinit load zsh-users/zsh-syntax-highlighting # 実行可能なコマンドに色付け
+zinit ice wait'!0'; zinit load zsh-users/zsh-completions # 補完
+zinit ice wait'!0'; zinit load zsh-users/zsh-autosuggestions # 履歴補完サジェスト
+zinit ice wait'!0'; zinit load zsh-users/zsh-history-substring-search # 履歴補完強化
+zinit ice wait'!0'; zinit load paulirish/git-open # git openで作業ディレクトリのwebリポジトリを開ける

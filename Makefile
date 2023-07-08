@@ -20,7 +20,6 @@ shell: powerline tmux zinit zprezto
 brew: #brew settings
 	brew update \
 	&& brew upgrade \
-	&& brew cask upgrade \
 	&& brew bundle
 
 anyenv: #anyenv settings
@@ -73,99 +72,94 @@ tmux:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 vscode:
-	code --install-extension
-	42Crunch.vscode-openapi
-	aaron-bond.better-comments
-	abusaidm.html-snippets
-	adpyke.vscode-sql-formatter
-	adrianverdugo.buefy-snippet
-	akamud.vscode-theme-onedark
-	angelorafael.jsx-html-tags
-	antonholmberg.remove-bg
-	Arjun.swagger-viewer
-	astro-build.astro-vscode
-	bmewburn.vscode-intelephense-client
-	bung87.vscode-gemfile
-	christian-kohler.path-intellisense
-	chrmarti.regex
-	CraigMaslowski.erb
-	cssho.vscode-svgviewer
-	csstools.postcss
-	dariofuzinato.vue-peek
-	Dart-Code.dart-code
-	Dart-Code.flutter
-	dbaeumer.vscode-eslint
-	demijollamaxime.bulma
-	donjayamanne.githistory
-	dsznajder.es7-react-js-snippets
-	eamodio.gitlens
-	ecmel.vscode-html-css
-	EditorConfig.EditorConfig
-	emilast.LogFileHighlighter
-	esbenp.prettier-vscode
-	felixfbecker.php-intellisense
-	formulahendry.auto-close-tag
-	formulahendry.auto-rename-tag
-	foxundermoon.shell-format
-	github.vscode-github-actions
-	golang.go
-	GraphQL.vscode-graphql
-	GraphQL.vscode-graphql-execution
-	GraphQL.vscode-graphql-syntax
-	groksrc.ruby
-	hediet.vscode-drawio
-	hollowtree.canvas-snippets
-	Hridoy.rails-snippets
-	IBM.output-colorizer
-	intellsmi.comment-translate
-	jock.svg
-	junstyle.php-cs-fixer
-	kaiwood.endwise
-	lacroixdavid1.vscode-format-context-menu
-	manasxx.background-cover
-	mechatroner.rainbow-csv
-	MehediDracula.php-namespace-resolver
-	mhutchie.git-graph
-	mikestead.dotenv
-	mosapride.zenkaku
-	ms-azuretools.vscode-docker
-	MS-CEINTL.vscode-language-pack-ja
-	ms-vscode-remote.remote-containers
-	ms-vscode-remote.remote-ssh
-	ms-vscode-remote.remote-ssh-edit
-	ms-vscode-remote.remote-wsl
-	ms-vscode-remote.vscode-remote-extensionpack
-	ms-vscode.remote-explorer
-	ms-vscode.remote-server
-	ms-vsliveshare.vsliveshare
-	msjsdiag.vscode-react-native
-	neilbrayfield.php-docblocker
-	oderwat.indent-rainbow
-	onecentlin.laravel-blade
-	onecentlin.laravel5-snippets
-	PKief.material-icon-theme
-	pranaygp.vscode-css-peek
-	Prisma.prisma
-	rebornix.ruby
-	redhat.vscode-yaml
-	ritwickdey.LiveServer
-	sdras.vue-vscode-snippets
-	SirTobi.code-clip-ring
-	streetsidesoftware.code-spell-checker
-	stylelint.vscode-stylelint
-	syler.sass-indented
-	toba.vsfire
-	vscode-icons-team.vscode-icons
-	vscodevim.vim
-	Vue.volar
-	waderyan.gitblame
-	wingrunr21.vscode-ruby
-	wmaurer.change-case
-	wraith13.open-in-github-desktop
-	xabikos.JavaScriptSnippets
-	xdebug.php-debug
-	yzhang.markdown-all-in-one
-	Zignd.html-css-class-completion
+	code --install-extension 42Crunch.vscode-openapi
+	code --install-extension aaron-bond.better-comments
+	code --install-extension abusaidm.html-snippets
+	code --install-extension adpyke.vscode-sql-formatter
+	code --install-extension adrianverdugo.buefy-snippet
+	code --install-extension akamud.vscode-theme-onedark
+	code --install-extension angelorafael.jsx-html-tags
+	code --install-extension antonholmberg.remove-bg
+	code --install-extension Arjun.swagger-viewer
+	code --install-extension astro-build.astro-vscode
+	code --install-extension bmewburn.vscode-intelephense-client
+	code --install-extension bung87.vscode-gemfile
+	code --install-extension christian-kohler.path-intellisense
+	code --install-extension chrmarti.regex
+	code --install-extension CraigMaslowski.erb
+	code --install-extension csstools.postcss
+	code --install-extension dariofuzinato.vue-peek
+	code --install-extension Dart-Code.dart-code
+	code --install-extension Dart-Code.flutter
+	code --install-extension dbaeumer.vscode-eslint
+	code --install-extension demijollamaxime.bulma
+	code --install-extension donjayamanne.githistory
+	code --install-extension dsznajder.es7-react-js-snippets
+	code --install-extension eamodio.gitlens
+	code --install-extension ecmel.vscode-html-css
+	code --install-extension EditorConfig.EditorConfig
+	code --install-extension emilast.LogFileHighlighter
+	code --install-extension esbenp.prettier-vscode
+	code --install-extension formulahendry.auto-close-tag
+	code --install-extension formulahendry.auto-rename-tag
+	code --install-extension foxundermoon.shell-format
+	code --install-extension github.vscode-github-actions
+	code --install-extension golang.go
+	code --install-extension GraphQL.vscode-graphql
+	code --install-extension GraphQL.vscode-graphql-execution
+	code --install-extension GraphQL.vscode-graphql-syntax
+	code --install-extension groksrc.ruby
+	code --install-extension hediet.vscode-drawio
+	code --install-extension hollowtree.canvas-snippets
+	code --install-extension Hridoy.rails-snippets
+	code --install-extension IBM.output-colorizer
+	code --install-extension intellsmi.comment-translate
+	code --install-extension jock.svg
+	code --install-extension junstyle.php-cs-fixer
+	code --install-extension kaiwood.endwise
+	code --install-extension lacroixdavid1.vscode-format-context-menu
+	code --install-extension manasxx.background-cover
+	code --install-extension mechatroner.rainbow-csv
+	code --install-extension MehediDracula.php-namespace-resolver
+	code --install-extension mhutchie.git-graph
+	code --install-extension mikestead.dotenv
+	code --install-extension mosapride.zenkaku
+	code --install-extension ms-azuretools.vscode-docker
+	code --install-extension MS-CEINTL.vscode-language-pack-ja
+	code --install-extension ms-vscode-remote.remote-containers
+	code --install-extension ms-vscode-remote.remote-ssh
+	code --install-extension ms-vscode-remote.remote-ssh-edit
+	code --install-extension ms-vscode-remote.remote-wsl
+	code --install-extension ms-vscode.remote-explorer
+	code --install-extension ms-vscode.remote-server
+	code --install-extension ms-vsliveshare.vsliveshare
+	code --install-extension msjsdiag.vscode-react-native
+	code --install-extension neilbrayfield.php-docblocker
+	code --install-extension oderwat.indent-rainbow
+	code --install-extension onecentlin.laravel-blade
+	code --install-extension onecentlin.laravel5-snippets
+	code --install-extension PKief.material-icon-theme
+	code --install-extension pranaygp.vscode-css-peek
+	code --install-extension Prisma.prisma
+	code --install-extension rebornix.ruby
+	code --install-extension redhat.vscode-yaml
+	code --install-extension ritwickdey.LiveServer
+	code --install-extension sdras.vue-vscode-snippets
+	code --install-extension SirTobi.code-clip-ring
+	code --install-extension streetsidesoftware.code-spell-checker
+	code --install-extension stylelint.vscode-stylelint
+	code --install-extension syler.sass-indented
+	code --install-extension toba.vsfire
+	code --install-extension vscode-icons-team.vscode-icons
+	code --install-extension Vue.volar
+	code --install-extension waderyan.gitblame
+	code --install-extension wingrunr21.vscode-ruby
+	code --install-extension wmaurer.change-case
+	code --install-extension wraith13.open-in-github-desktop
+	code --install-extension xabikos.JavaScriptSnippets
+	code --install-extension xdebug.php-debug
+	code --install-extension yzhang.markdown-all-in-one
+	code --install-extension Zignd.html-css-class-completion
 
 zinit:
 	echo y | curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh
@@ -173,6 +167,7 @@ zinit:
 zprezto:
 	git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 
+.PHONY: vscode
 .PHONY: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
