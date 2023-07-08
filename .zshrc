@@ -6,6 +6,8 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
+## 他のzshと履歴を共有
+setopt inc_append_history
 setopt share_history
 
 # alias settings
@@ -98,14 +100,13 @@ fi
 ##########################################################
 
 # Override auto-title when static titles are desired ($ title My new title)
-title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"}
+title() { export TITLE_OVERRIDDEN=1; echo -en "\e]0;$*\a"; }
 # Turn off static titles ($ autotitle)
 autotitle() { export TITLE_OVERRIDDEN=0 }; autotitle
 # Condition checking if title is overridden
 overridden() { [[ $TITLE_OVERRIDDEN == 1 ]]; }
 # Echo asterisk if git state is dirty
-gitDirty() { [[ $(git status 2> /dev/null | grep -o '\w\+' | tail -n1) != ("clean"|"") ]] && echo "*" }
-
+gitDirty() { [[ $(git status 2> /dev/null | grep -o '\w\+' | tail -n1) != ("clean"|"") ]] && echo "*"; }
 # Show cwd when shell prompts for input.
 tabtitle_precmd() {
   if overridden; then return; fi
@@ -126,14 +127,6 @@ preexec_functions=($preexec_functions tabtitle_preexec)
 
 . /usr/local/opt/asdf/libexec/asdf.sh
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
 ### End of Zinit's installer chunk
 
 ### Added by Zinit's installer
@@ -149,6 +142,13 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
 # zinit plugins
 zinit load momo-lab/zsh-abbrev-alias # 略語を展開する
@@ -157,3 +157,4 @@ zinit ice wait'!0'; zinit load zsh-users/zsh-completions # 補完
 zinit ice wait'!0'; zinit load zsh-users/zsh-autosuggestions # 履歴補完サジェスト
 zinit ice wait'!0'; zinit load zsh-users/zsh-history-substring-search # 履歴補完強化
 zinit ice wait'!0'; zinit load paulirish/git-open # git openで作業ディレクトリのwebリポジトリを開ける
+zinit ice wait'!0'; zinit load gretzky/auto-color-ls # lsコマンド結果に色を付ける
